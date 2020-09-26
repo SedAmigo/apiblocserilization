@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:serelization/model/post.dart';
+import 'package:serelization/model/post_model/post.dart';
 
 abstract class PostState {
   const PostState();

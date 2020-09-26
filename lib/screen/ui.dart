@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:serelization/bloc/postbloc/post_bloc.dart';
-
-import 'package:serelization/model/post.dart';
+import 'package:serelization/model/post_model/post.dart';
+import 'package:serelization/screen/userUi.dart';
 
 class UT extends StatefulWidget {
   @override
@@ -15,12 +15,25 @@ class _UTState extends State<UT> {
     BlocProvider.of<PostCubit>(context).getPost();
     super.initState();
   }
+
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Api'),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.arrow_forward_ios),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserUi(),
+                  ),
+                );
+              })
+        ],
       ),
       body: BlocBuilder<PostCubit, PostState>(
         builder: (context, postState) {
